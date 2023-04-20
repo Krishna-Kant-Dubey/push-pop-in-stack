@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct stack{
+    int size;
+    int top;
+};
+int isfull(struct stack*ptr){
+    if(ptr->top==ptr->size-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+int isempty(struct stack*ptr){
+    if(ptr->top==-1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+void push(struct stack*ptr,int v){
+    if(isfull(ptr)){
+        printf("stack is overflow\n");
+    }
+    else{
+        ptr->top++;
+        ptr->top=v;
+    }
+}
+void pop(struct stack*ptr){
+    if(isempty(ptr)){
+        printf("stack is over\n");
+
+    }
+    else{
+        int v=ptr->top;
+        ptr->top--;
+        printf("%d\n",v);
+    }
+    }
+int main(){
+    struct stack*sp=malloc(sizeof(struct stack));
+    sp->size=3;
+    sp->top=-1;
+    printf("stack is succesfully creat\n");
+    printf("%d\n",isfull(sp));
+    printf("%d\n",isempty(sp));
+    push(sp,5);
+    push(sp,3);
+    push(sp,2);
+    
+    printf("%d\n",isfull(sp));
+    printf("%d",isempty(sp));
+    pop(sp);
+    return 0;
+}
